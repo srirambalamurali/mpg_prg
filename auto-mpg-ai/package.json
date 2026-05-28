@@ -1,0 +1,18 @@
+{
+  "name": "auto-mpg-ai",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo for the Auto MPG AI prediction application.",
+  "workspaces": [
+    "apps/frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix apps/frontend\" \"uvicorn apps.backend.app.main:app --reload\"",
+    "frontend": "npm run dev --prefix apps/frontend",
+    "backend": "uvicorn apps.backend.app.main:app --reload",
+    "build": "npm run build --prefix apps/frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

@@ -1,0 +1,16 @@
+node_modules
+dist
+build
+.vercel
+.env
+.env.local
+__pycache__
+*.pyc
+venv
+.venv
+.ipynb_checkpoints
+.DS_Store
+apps/frontend/node_modules
+apps/frontend/dist
+apps/backend/__pycache__
+apps/backend/app/__pycache__

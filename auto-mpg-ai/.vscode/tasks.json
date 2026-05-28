@@ -1,0 +1,24 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "backend",
+			"type": "shell",
+			"command": "C:/Users/LENOVO/AppData/Local/Programs/Python/Python311/python.exe",
+			"args": [
+				"-m",
+				"uvicorn",
+				"apps.backend.app.main:app",
+				"--host",
+				"127.0.0.1",
+				"--port",
+				"8000"
+			],
+			"isBackground": true,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		}
+	]
+}

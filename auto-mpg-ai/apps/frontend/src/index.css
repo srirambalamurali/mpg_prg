@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-midnight-950 text-slate-100 font-body antialiased;
+    background:
+      radial-gradient(circle at top, rgba(8, 189, 209, 0.15), transparent 32%),
+      radial-gradient(circle at 80% 20%, rgba(24, 199, 116, 0.14), transparent 24%),
+      linear-gradient(180deg, #050816 0%, #070d1a 50%, #050816 100%);
+  }
+
+  * {
+    @apply selection:bg-electric-400/30 selection:text-white;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/5 backdrop-blur-2xl shadow-glass;
+  }
+
+  .glass-panel-strong {
+    @apply border border-electric-400/20 bg-slate-950/70 backdrop-blur-2xl shadow-neon;
+  }
+
+  .neon-gradient {
+    background: linear-gradient(135deg, #16d5e9 0%, #18c774 45%, #f9c74f 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #e6feff 0%, #7cf4ff 36%, #69f5b4 68%, #f9c74f 100%);
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl px-6 py-3 font-semibold text-slate-950 transition duration-300;
+    background: linear-gradient(135deg, #7cf4ff 0%, #69f5b4 50%, #f9c74f 100%);
+    box-shadow: 0 0 0 1px rgba(124, 244, 255, 0.18), 0 16px 36px rgba(8, 189, 209, 0.32);
+  }
+
+  .button-primary:hover {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center gap-3 rounded-2xl border border-electric-400/20 bg-white/5 px-6 py-3 font-semibold text-white transition duration-300 hover:bg-white/10;
+  }
+
+  .input-shell {
+    @apply w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-electric-400/50 focus:ring-2 focus:ring-electric-400/20;
+  }
+
+  .label-chip {
+    @apply inline-flex items-center rounded-full border border-electric-400/20 bg-electric-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-electric-100;
+  }
+}
