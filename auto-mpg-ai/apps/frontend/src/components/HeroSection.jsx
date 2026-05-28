@@ -12,15 +12,11 @@ export const HeroSection = ({ onScrollToForm }) => (
       >
         <div className="flex flex-wrap items-center gap-3">
           <span className="label-chip">Auto MPG Intelligence</span>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-            <FiCpu className="text-electric-300" />
-            FastAPI + Vite Monorepo
-          </span>
         </div>
 
         <div className="space-y-5">
           <h1 className="max-w-3xl font-display text-5xl font-bold tracking-tight text-white md:text-7xl">
-            <span className="text-gradient">AI Powered MPG Prediction</span>
+            <span className="text-gradient">MPG Prediction</span>
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
             Predict vehicle fuel efficiency using machine learning with a premium automotive interface built for modern deployment.
@@ -53,11 +49,7 @@ export const HeroSection = ({ onScrollToForm }) => (
               <p className="mt-2 text-3xl font-semibold text-white">Random Forest</p>
               <p className="mt-3 text-sm leading-6 text-slate-300">Optimized pipeline with preprocessing and feature engineering embedded in one artifact.</p>
             </div>
-            <div className="rounded-3xl border border-electric-400/15 bg-gradient-to-br from-electric-400/10 to-neon-400/10 p-5">
-              <p className="text-sm text-slate-400">Deployment</p>
-              <p className="mt-2 text-3xl font-semibold text-white">Vercel Ready</p>
-              <p className="mt-3 text-sm leading-6 text-slate-300">Built for serverless Python routing and static React delivery in a single monorepo.</p>
-            </div>
+            
           </div>
 
           <div className="mt-5 rounded-3xl border border-white/10 bg-slate-950/50 p-5">
