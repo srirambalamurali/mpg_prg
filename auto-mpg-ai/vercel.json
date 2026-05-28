@@ -2,21 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "apps/backend/app/main.py",
+      "src": "apps/backend/api/index.py",
       "use": "@vercel/python"
     },
     {
       "src": "apps/frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "apps/frontend/dist"
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "apps/backend/app/main.py"
+      "dest": "apps/backend/api/index.py"
     },
     {
       "handle": "filesystem"
