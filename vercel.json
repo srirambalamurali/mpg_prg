@@ -13,6 +13,11 @@
       }
     }
   ],
+  "functions": {
+    "apps/backend/index.py": {
+      "includeFiles": "ml/models/final_pipeline.pkl"
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -23,7 +28,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "apps/frontend/dist/index.html"
+      "dest": "/index.html"
     }
   ]
 }
