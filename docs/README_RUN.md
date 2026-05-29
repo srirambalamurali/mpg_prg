@@ -1,29 +1,34 @@
-Run & Debug — Auto MPG Monorepo
+Run & Debug - Auto MPG Monorepo
 
 Quick local setup on Windows:
 
-1) Install backend Python deps and start the backend
+1. Install workspace dependencies and backend Python deps
 
 ```powershell
+pnpm install
 python -m pip install -r apps/backend/requirements.txt
-python -m uvicorn apps.backend.app.main:app --app-dir "c:/Users/LENOVO/Desktop/mpg_prg" --host 127.0.0.1 --port 8000 --reload
 ```
 
-- Health: `http://127.0.0.1:8000/api/health`
-- Docs: `http://127.0.0.1:8000/docs`
-
-2) Install frontend deps and start Vite
+2. Start both apps together from the repo root
 
 ```powershell
-npm install
-npm run dev --prefix apps/frontend
+pnpm dev
 ```
 
 - Frontend: `http://localhost:5173`
+- Backend health: `http://127.0.0.1:8000/api/health`
+- Backend docs: `http://127.0.0.1:8000/docs`
+
+Standalone commands:
+
+```powershell
+pnpm dev:frontend
+pnpm dev:backend
+```
 
 Common fixes:
 
-- If backend model loading fails, confirm the file exists at `apps/backend/models/final_pipeline.pkl`.
+- If backend model loading fails, confirm the file exists at `ml/models/final_pipeline.pkl`.
 - If frontend API calls fail locally, confirm Vite is proxying `/api` to port `8000`.
 
 Stopping servers:

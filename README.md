@@ -1,58 +1,62 @@
 # Auto MPG Monorepo
 
-Auto MPG Monorepo is a full-stack machine learning application for predicting vehicle fuel efficiency from automobile specifications.
+This repository is now organized as a single clean monorepo with one frontend and one backend.
 
-The repo is organized as a professional monorepo with one React + Vite frontend, one FastAPI backend, and one active scikit-learn pipeline artifact.
-
-## What Lives Where
+## Structure
 
 ```text
-auto-mpg-monorepo/
+root/
 ├── apps/
 │   ├── frontend/
 │   └── backend/
 ├── ml/
 ├── docs/
 ├── package.json
-├── pnpm-workspace.yaml
 ├── turbo.json
+├── pnpm-workspace.yaml
 ├── vercel.json
 └── README.md
 ```
 
-The active model artifact is stored at [apps/backend/models/final_pipeline.pkl](apps/backend/models/final_pipeline.pkl).
-
 ## Stack
 
-- Frontend: React, Vite, Tailwind CSS, Axios, Framer Motion, React Icons, React Hot Toast
-- Backend: FastAPI, Pydantic, Uvicorn, Joblib, Pandas, NumPy, scikit-learn
+- Frontend: React + Vite + Tailwind CSS
+- Backend: FastAPI + Pydantic + Uvicorn
+- Monorepo: TurboRepo + pnpm workspace
 - Deployment: Vercel
+
+## What Changed
+
+- The canonical frontend now lives in [apps/frontend](apps/frontend).
+- The canonical backend now lives in [apps/backend](apps/backend).
+- The trained model artifact now lives in [ml/models/final_pipeline.pkl](ml/models/final_pipeline.pkl).
+- ML source assets live under [ml](ml).
 
 ## Local Development
 
 Install dependencies from the repository root:
 
-```bash
-npm install
-pip install -r apps/backend/requirements.txt
+```powershell
+pnpm install
+python -m pip install -r apps/backend/requirements.txt
 ```
 
 Run both apps together:
 
-```bash
-npm run dev
+```powershell
+pnpm dev
 ```
 
-Frontend only:
+Run the frontend only:
 
-```bash
-npm run frontend
+```powershell
+pnpm dev:frontend
 ```
 
-Backend only:
+Run the backend only:
 
-```bash
-npm run backend
+```powershell
+pnpm dev:backend
 ```
 
 ## API
@@ -77,25 +81,23 @@ Example payload:
 
 ## Environment Variables
 
-- Single Vercel deployment: `VITE_API_URL=/api`
-- Separate frontend/backend deployments: `VITE_API_URL=https://<backend-deployment>/api`
-- Backend: `MODEL_PATH=apps/backend/models/final_pipeline.pkl`
+- Frontend local development: `VITE_API_URL=http://127.0.0.1:8000/api`
+- Frontend Vercel deployment: `VITE_API_URL=/api`
+- Backend model path override: `MODEL_PATH=ml/models/final_pipeline.pkl`
+- Backend CORS override: `CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173`
 
 ## Deployment
 
-1. For one monorepo deployment, import the repo root in Vercel and keep the root `vercel.json`.
-2. That config routes `/api/*` to `apps/backend/index.py` and serves the frontend build from `apps/frontend`.
-3. For that single-project setup, set `VITE_API_URL=/api`.
-4. If you prefer separate Vercel projects, deploy `apps/frontend` and `apps/backend` independently and point the frontend at the backend deployment URL.
+The root [vercel.json](vercel.json) is configured for a single Vercel deployment:
+
+- `/api/*` routes to [apps/backend/index.py](apps/backend/index.py)
+- the frontend builds from [apps/frontend/package.json](apps/frontend/package.json)
+- the SPA fallback serves [apps/frontend/dist/index.html](apps/frontend/dist/index.html)
+
+If you deploy the frontend and backend separately, keep the same API contract and point `VITE_API_URL` at the backend deployment.
 
 ## Notes
 
-- The frontend keeps the existing UI layout and motion design.
-- The backend keeps the same inference behavior and validation rules.
-- `ml/` contains notebooks, datasets, and experiment artifacts only.
-- `model_year`
-
-Categorical:
-
-- `origin`
-- `brand`
+- The backend still exposes health and prediction endpoints independently.
+- The frontend still uses Vite proxying to `http://127.0.0.1:8000` during local development.
+- The `docs/` folder contains run instructions and project notes.

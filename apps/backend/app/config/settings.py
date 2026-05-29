@@ -2,14 +2,14 @@ from functools import lru_cache
 from pathlib import Path
 import os
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 def _default_model_path() -> Path:
     configured_path = os.getenv("MODEL_PATH")
     if configured_path:
         return Path(configured_path)
-    return Path(__file__).resolve().parents[2] / "models" / "final_pipeline.pkl"
+    return Path(__file__).resolve().parents[4] / "ml" / "models" / "final_pipeline.pkl"
 
 
 def _default_cors_origins() -> list[str]:
@@ -19,6 +19,8 @@ def _default_cors_origins() -> list[str]:
 
 
 class Settings(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     app_name: str = "Auto MPG AI"
     api_prefix: str = "/api"
     model_path: Path = Field(default_factory=_default_model_path)
