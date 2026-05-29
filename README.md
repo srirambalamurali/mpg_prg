@@ -94,6 +94,8 @@ The root [vercel.json](vercel.json) is configured for a single Vercel deployment
 - the frontend builds from [apps/frontend/package.json](apps/frontend/package.json)
 - the SPA fallback serves [apps/frontend/dist/index.html](apps/frontend/dist/index.html)
 
+After updating deployment config, push a new commit to `main` so Vercel creates a fresh production deployment for the project domain.
+
 If you deploy the frontend and backend separately, keep the same API contract and point `VITE_API_URL` at the backend deployment.
 
 ## Notes
