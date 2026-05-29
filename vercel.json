@@ -23,7 +23,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "apps/frontend/dist/index.html"
+      "dest": "/index.html"
     }
   ]
 }
