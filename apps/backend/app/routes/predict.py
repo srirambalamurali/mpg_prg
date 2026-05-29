@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 
 from ..schemas.prediction import MPGPredictionRequest, MPGPredictionResponse
-from ..services.model_service import get_model_service
 
 router = APIRouter(tags=["prediction"])
 
@@ -9,6 +8,8 @@ router = APIRouter(tags=["prediction"])
 @router.post("/predict", response_model=MPGPredictionResponse)
 def predict_mpg(payload: MPGPredictionRequest):
     try:
+        from ..services.model_service import get_model_service
+
         prediction = get_model_service().predict(payload)
         return MPGPredictionResponse(**prediction)
     except FileNotFoundError as exc:

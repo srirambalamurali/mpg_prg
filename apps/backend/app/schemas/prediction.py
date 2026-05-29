@@ -1,7 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class MPGPredictionRequest(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     cylinders: int = Field(..., ge=1, le=12)
     displacement: float = Field(..., ge=0)
     horsepower: float = Field(..., ge=0)
@@ -13,5 +15,7 @@ class MPGPredictionRequest(BaseModel):
 
 
 class MPGPredictionResponse(BaseModel):
+    model_config = ConfigDict(protected_namespaces=())
+
     predicted_mpg: float
     efficiency_category: str
