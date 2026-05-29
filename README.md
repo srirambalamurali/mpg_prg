@@ -77,15 +77,16 @@ Example payload:
 
 ## Environment Variables
 
-- Frontend: `VITE_API_URL=https://<backend-deployment>/api`
+- Single Vercel deployment: `VITE_API_URL=/api`
+- Separate frontend/backend deployments: `VITE_API_URL=https://<backend-deployment>/api`
 - Backend: `MODEL_PATH=apps/backend/models/final_pipeline.pkl`
 
 ## Deployment
 
-1. Deploy the backend from `apps/backend`.
-2. Deploy the frontend from `apps/frontend`.
-3. Set the frontend `VITE_API_URL` to the backend deployment URL with the `/api` suffix.
-4. Keep the shared root `vercel.json` if you want a combined single-project deployment path.
+1. For one monorepo deployment, import the repo root in Vercel and keep the root `vercel.json`.
+2. That config routes `/api/*` to `apps/backend/index.py` and serves the frontend build from `apps/frontend`.
+3. For that single-project setup, set `VITE_API_URL=/api`.
+4. If you prefer separate Vercel projects, deploy `apps/frontend` and `apps/backend` independently and point the frontend at the backend deployment URL.
 
 ## Notes
 
