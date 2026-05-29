@@ -1,5 +1,5 @@
 {
-  "name": "auto-mpg-ai-frontend",
+  "name": "auto-mpg-frontend",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "auto-mpg-ai": "file:../..",
+    "auto-mpg-monorepo": "file:../..",
     "axios": "^1.7.7",
     "framer-motion": "^11.11.8",
     "react": "^18.3.1",

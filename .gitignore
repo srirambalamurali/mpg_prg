@@ -1,1 +1,96 @@
-/.venv
+# Node
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnp.*
+
+# Frontend build outputs
+apps/frontend/dist/
+dist/
+build/
+.vite/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+ENV/
+env/
+pip-wheel-metadata/
+pip-log.txt
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Test / coverage
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Misc
+*.pem
+*.key
+*.tgz
+
+# Keep model artifacts tracked by default (if you store models in repo, do not ignore)
+# If you prefer to ignore large model artifacts, uncomment the following:
+# apps/backend/models/*.pkl
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Node / build output
+node_modules/
+apps/frontend/node_modules/
+dist/
+build/
+apps/frontend/dist/
+.turbo/
+.vercel/
+
+# Environment files
+.env
+.env.local
+apps/frontend/.env
+apps/frontend/.env.local
+apps/backend/.env
+apps/backend/.env.local
+
+# Logs and temporary files
+*.log
+_tmp_predict_payload.json
+
+# OS files
+.DS_Store

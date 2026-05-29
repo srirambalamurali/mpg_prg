@@ -9,7 +9,7 @@ def _default_model_path() -> Path:
     configured_path = os.getenv("MODEL_PATH")
     if configured_path:
         return Path(configured_path)
-    return Path(__file__).resolve().parents[2] / "model" / "final_pipeline.pkl"
+    return Path(__file__).resolve().parents[2] / "models" / "final_pipeline.pkl"
 
 
 def _default_cors_origins() -> list[str]:
