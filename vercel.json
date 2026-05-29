@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "apps/backend/index.py",
+      "src": "api/index.py",
       "use": "@vercel/python"
     },
     {
@@ -14,14 +14,14 @@
     }
   ],
   "functions": {
-    "apps/backend/index.py": {
+    "api/index.py": {
       "includeFiles": "ml/models/final_pipeline.pkl"
     }
   },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "apps/backend/index.py"
+      "dest": "api/index.py"
     },
     {
       "handle": "filesystem"
