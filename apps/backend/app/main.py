@@ -12,6 +12,10 @@ from .routes.health import router as health_router
 from .routes.predict import router as predict_router
 from .utils.logging_config import configure_logging
 
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 settings = get_settings()
 configure_logging(settings.log_level)
 logger = logging.getLogger(__name__)
@@ -62,3 +66,21 @@ app.include_router(predict_router, prefix=settings.api_prefix)
 @app.on_event("startup")
 async def on_startup() -> None:
     logger.info("%s starting with model path %s", settings.app_name, settings.model_path)
+
+frontend_dist = (
+    Path(__file__).resolve().parents[2]
+    / "frontend"
+    / "dist"
+)
+
+if frontend_dist.exists():
+    app.mount(
+        "/assets",
+        StaticFiles(directory=frontend_dist / "assets"),
+        name="assets",
+    )
+
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        index_file = frontend_dist / "index.html"
+        return FileResponse(index_file)
